@@ -54,8 +54,10 @@ export default {
 			}
 		});
 		let response = await fetch(proxyRequest);
+		let bodyInit = (await response.text())
 		return new Response(
-		  response.body, {status: response.status, headers: {...response.headers,  ...corsHeaders}}
-		)
+		  bodyInit,
+		  { status: response.status, headers: { ...response.headers, ...corsHeaders } }
+		);
 	},
 };
